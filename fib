@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main {
+  public static boolean isPalindromic(int A) {
+    int reverse = 0;
+    int original = A;
+    while (A != 0) {
+      reverse = reverse * 10 + A % 10;
+      A /= 10;
+    }
+    return original == reverse;
+  }
+
+  public static boolean isPerfectSquareUsingFibonacci(int A) {
+    int fibonacciCheck = 5 * A * A + 4;
+    int root = (int) Math.sqrt(fibonacciCheck);
+    if (root * root == fibonacciCheck) {
+      return true;
+    }
+    fibonacciCheck = 5 * A * A - 4;
+    root = (int) Math.sqrt(fibonacciCheck);
+    return root * root == fibonacciCheck;
+  }
+
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    System.out.print("Enter a 2-digit number: ");
+    int number = input.nextInt();
+
+    if (number >= 10 && number <= 99) {
+      if (isPalindromic(number) && isPerfectSquareUsingFibonacci(number)) {
+        System.out.println("The number is a palindromic and a perfect square.");
+      } else if (isPalindromic(number)) {
+        System.out.println("The number is a palindromic.");
+      } else if (isPerfectSquareUsingFibonacci(number)) {
+        System.out.println("The number is a perfect square.");
+      } else {
+        System.out.println("The number is neither a palindromic nor a perfect square.");
+      }
+    } else {
+      System.out.println("Invalid input. Number should be between 10 and 99.");
+    }
+  }
+}
