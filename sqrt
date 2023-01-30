@@ -1,0 +1,18 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class SquareRoot {
+  public static double getSquareRoot(double N) {
+    double squareRoot = 0;
+    double formula1 = (5 * Math.pow(N, 2) + 4);
+    double formula2 = (5 * Math.pow(N, 2) - 4);
+    if (Math.sqrt(formula1) % 1 == 0) {
+      squareRoot = Math.sqrt(formula1);
+    } else if (Math.sqrt(formula2) % 1 == 0) {
+      squareRoot = Math.sqrt(formula2);
+    }
+    return new BigDecimal(squareRoot)
+        .setScale(4, RoundingMode.HALF_UP)
+        .doubleValue();
+  }
+}
